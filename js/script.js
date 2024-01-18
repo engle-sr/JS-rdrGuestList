@@ -11,6 +11,10 @@ const guestCount = document.querySelector(".attendance");
 // alert when guest list is full (not yet visible)
 const guestFull = document.querySelector(".alert");
 
+const assignButton = document.querySelector(".assign");
+
+const assignedItems = document.querySelector(".assigned-items");
+
 addGuestButton.addEventListener("click", function () {
     const guest = guestInput.value;
     //console.log(guest);
@@ -21,14 +25,15 @@ addGuestButton.addEventListener("click", function () {
     }
 });
 
-const clearInput = function () {
-    guestInput.value = "";
-};
 
 const addToList = function (guest) {
     const listItem = document.createElement("li");
     listItem.innerText = guest;
     guestList.append(listItem);
+};
+
+const clearInput = function () {
+    guestInput.value = "";
 };
 
 const updateGuestCount = function () {
@@ -41,3 +46,26 @@ const updateGuestCount = function () {
         guestFull.classList.remove("hide");
     }
 };
+
+const assignItems = function () {
+    const taskItems = ["Koozies", "Route Details", "t-shirts", "Happy Hour Menu", "Event flyers", "Eventbrite Invitations", "Holler Haulers Details"];
+
+const allGuests = document.querySelectorAll(".guest-list li");
+
+for (let guest of allGuests) {
+    let randomTaskIndex = Math.floor(Math.random() * taskItems.length);
+    let randomTaskItem = taskItems[randomTaskIndex];
+
+    let listItem = document.createElement("li");
+        listItem.innerText =
+        `${guest.innerText} is bringing ${randomTaskItem}.`;
+        assignedItems.append(listItem);
+
+        taskItems.splice(randomTaskIndex, 1);
+    }
+};
+
+assignButton.addEventListener("click", function () {
+    assignItems();
+    assignButton.disabled = true;
+});
