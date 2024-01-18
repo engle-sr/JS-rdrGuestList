@@ -48,7 +48,7 @@ const updateGuestCount = function () {
 };
 
 const assignItems = function () {
-    const taskItems = ["Koozies", "Route Details", "t-shirts", "Happy Hour Menu", "Event flyers", "Eventbrite Invitations", "Holler Haulers Details"];
+    const taskItems = ["Koozies", "Route Details", "t-shirts", "Happy Hour Menu", "Event flyers", "Eventbrite Invitations", "Holler Haulers Details", "Sponsor Relations"];
 
 const allGuests = document.querySelectorAll(".guest-list li");
 
